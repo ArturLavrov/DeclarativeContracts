@@ -1,6 +1,6 @@
 using System;
 
-namespace DeclarativeContracts
+namespace DeclarativeContracts.Functions
 {
     public static class Is
     {

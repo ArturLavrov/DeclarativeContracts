@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DeclarativeContracts
+namespace DeclarativeContracts.Functions
 {
     public static class Has
     {

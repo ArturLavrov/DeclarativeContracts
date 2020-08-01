@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DeclarativeContracts.Exceptions;
 
-namespace DeclarativeContracts
+namespace DeclarativeContracts.Precondition
 {
     public static class Require
     {
