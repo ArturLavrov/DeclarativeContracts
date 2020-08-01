@@ -10,7 +10,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void AtLeastOneValue_ListWithOneValue_ReturnsTrue()
         {
-
+            string a = "b";
         }
 
         [Test]
