@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DeclarativeContracts.Exceptions;
 
 namespace DeclarativeContracts
 {
@@ -12,7 +13,19 @@ namespace DeclarativeContracts
 
         public static bool OnlyOneValue<TValue>(IEnumerable<TValue> enumeration)
         {
-            return !(enumeration.LongCount() > 1);
+            using (var enumerator = enumeration.GetEnumerator())
+            {
+                if(!enumerator.MoveNext())
+                {
+                    return false;
+                }
+
+                if (enumerator.MoveNext())
+                {
+                    return false;
+                }
+                return true;
+            }
         }
     }
 }
