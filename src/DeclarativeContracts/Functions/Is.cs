@@ -29,19 +29,35 @@ namespace DeclarativeContracts.Functions
             return !String.IsNullOrEmpty(stringToCheck);
         }
 
-        public static bool GreaterThanZero(int elementToCheck)
+        public static bool IsPositive(int elementToCheck)
         {
             return elementToCheck > 0;
         }
 
+        public static bool IsNegative(int elementToCheck)
+        {
+            return elementToCheck < 0;
+        }
+
         public static bool True(bool element)
         {
-            return element == true;
+            return element;
         }
 
         public static bool False(bool element)
         {
-            return element == false;
+            return !element;
         }
+
+        public static bool IsOdd(int numberToCheck)
+        {
+            throw new NotImplementedException("");
+        }
+        
+        public static bool IsEven(int numberToCheck)
+        {
+            throw new NotImplementedException("");
+        }
+        
     }
 }
