@@ -28,8 +28,9 @@ jobs:
     - name: Test
       run: |
         cd src 
-        dotnet test --no-restore --verbosity normal
+        dotnet test --collect:"XPlat Code Coverage" --no-restore --verbosity normal
     - name: Codecov
       uses: codecov/codecov-action@v1.0.12
       with:
          token: ${{ secrets.CODECOV_TOKEN }}
+         file: src/DeclarativeContracts.Tests/TestResults #
