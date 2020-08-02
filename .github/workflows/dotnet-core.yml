@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build
 
 on:
   push:
@@ -18,8 +18,18 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: |
+        cd src 
+        dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: |
+        cd src
+        dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: |
+        cd src 
+        dotnet test --no-restore --verbosity normal
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.12
+      with:
+         token: ${{ secrets.CODECOV_TOKEN }}
