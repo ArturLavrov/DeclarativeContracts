@@ -33,5 +33,5 @@ jobs:
       uses: codecov/codecov-action@v1.0.12
       with:
          token: ${{ secrets.CODECOV_TOKEN }}
-         file: find . -name coverage.cobertura.xml
+         file: /**/coverage.cobertura.xml
 
