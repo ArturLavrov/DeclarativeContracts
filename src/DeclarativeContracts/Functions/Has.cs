@@ -7,7 +7,7 @@ namespace DeclarativeContracts.Functions
     {
         public static bool AtLeastOneValue<TValue>(IEnumerable<TValue> enumeration)
         {
-            return enumeration.Any();
+            return enumeration != null && enumeration.Any();
         }
 
         public static bool OnlyOneValue<TValue>(IEnumerable<TValue> enumeration)
