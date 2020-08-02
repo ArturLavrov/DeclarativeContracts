@@ -12,6 +12,11 @@ namespace DeclarativeContracts.Functions
 
         public static bool OnlyOneValue<TValue>(IEnumerable<TValue> enumeration)
         {
+            if (enumeration == null)
+            {
+                return false;
+            }
+
             using (var enumerator = enumeration.GetEnumerator())
             {
                 if(!enumerator.MoveNext())
