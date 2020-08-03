@@ -103,5 +103,17 @@ namespace DeclarativeContracts.Tests.Functions
             int negativeInteger = 1;
             Assert.False(Is.Negative(negativeInteger));
         }
+
+        [Test]
+        public void True_True_ReturnsTrue()
+        {
+            Assert.True(Is.True(true));
+        }
+        
+        [Test]
+        public void True_False_ReturnsFalse()
+        {
+            Assert.True(Is.False(false));
+        }
     }
 }
