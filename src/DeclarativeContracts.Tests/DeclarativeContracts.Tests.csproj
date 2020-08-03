@@ -22,10 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Functions" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\DeclarativeContracts\DeclarativeContracts.csproj" />
     </ItemGroup>
 

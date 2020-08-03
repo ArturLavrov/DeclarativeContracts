@@ -14,12 +14,12 @@ namespace DeclarativeContracts.Functions
             return obj != null;
         }
         
-        public static bool Empty<TElement>(TElement obj) where TElement : struct
+        public static bool Default<TElement>(TElement obj) where TElement : struct
         {
             return obj.Equals(default(TElement));
         }
         
-        public static bool NotEmpty<TElement>(TElement obj) where TElement : struct
+        public static bool NotDefault<TElement>(TElement obj) where TElement : struct
         {
             return !obj.Equals(default(TElement));
         }
@@ -29,12 +29,12 @@ namespace DeclarativeContracts.Functions
             return !String.IsNullOrEmpty(stringToCheck);
         }
 
-        public static bool IsPositive(int elementToCheck)
+        public static bool Positive(int elementToCheck)
         {
             return elementToCheck > 0;
         }
 
-        public static bool IsNegative(int elementToCheck)
+        public static bool Negative(int elementToCheck)
         {
             return elementToCheck < 0;
         }
