@@ -4,17 +4,17 @@ using DeclarativeContracts.Exceptions;
 namespace DeclarativeContracts.Postcondition
 {
     /// <summary>
-    /// Class that represent methods for performing preconditions
+    /// Class that represent methods for performing postcondition checking
     /// </summary>
     public class Ensure
     {
         /// <summary>
-        /// Verified that verify selected mebmer satisfied specified predicate
+        /// Verified that selected member satisfied specified predicate
         /// </summary>
         /// <param name="memberSelector">Func that select specified member to check</param>
-        /// <param name="predicate"Predicate that checks selected member></param>
-        /// <typeparam name="TElement"Element type to check></typeparam>
-        /// <typeparam name="TException">Exception type to thro</typeparam>
+        /// <param name="predicate">Predicate that checks selected member</param>
+        /// <typeparam name="TElement">Element type to check</typeparam>
+        /// <typeparam name="TException">Exception type to throw</typeparam>
         /// <returns></returns>
         public static void That<TElement>(Func<TElement> memberSelector, Predicate<TElement> predicate)
         {
@@ -26,11 +26,11 @@ namespace DeclarativeContracts.Postcondition
         }
         
         /// <summary>
-        /// Veify that verify element satisfied specified predicate
+        /// Verify that verify element satisfied specified predicate
         /// </summary>
-        /// <param name="element">Element that needs to be cheked</param>
+        /// <param name="element">Element that needs to be checked</param>
         /// <param name="predicate">Predicate that checks selected member</param>
-        /// <typeparam name="TElement"Element type to check></typeparam>
+        /// <typeparam name="TElement">Element type to check</typeparam>
         public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
             if (!predicate(element))
@@ -40,13 +40,13 @@ namespace DeclarativeContracts.Postcondition
         }
 
         /// <summary>
-        ///Veify that verify element satisfied specified predicate, and throw passed exception.
+        ///Verify that element satisfied specified predicate, and throw passed exception.
         /// </summary>
-        /// <param name="element">Element that needs to be cheked</param>
+        /// <param name="element">Element that needs to be checked</param>
         /// <param name="predicate">Predicate that checks selected member</param>
         /// <param name="exceptionToThrow">Exception to throw if contract violated</param>
-        /// <typeparam name="TElement"Element type to check></typeparam>
-        /// <typeparam name="TException">Exception type to thro</typeparam>
+        /// <typeparam name="TElement">Element type to check</typeparam>
+        /// <typeparam name="TException">Exception type to throw</typeparam>
         /// <returns></returns>
         public static void That<TElement, TException>(TElement element, Predicate<TElement> predicate,
             TException exceptionToThrow) where TException : Exception, new()
