@@ -1,11 +1,11 @@
-<center>
-    <img style="float: right;" src="https://www.clipartkey.com/mpngs/m/20-203198_handshake-clipart-hand-shake-clip-art-png.png" width=400px; height=300px>
-</center>
+<p align="center">
+  <img style="float: right;" src="https://www.clipartkey.com/mpngs/m/20-203198_handshake-clipart-hand-shake-clip-art-png.png" width=400px; height=300px>
+</p>
 
 # DeclarativeContracts    ![Build](https://github.com/ArturLavrov/DeclarativeContracts/workflows/Build/badge.svg?branch=master) [![codecov](https://codecov.io/gh/ArturLavrov/DeclarativeContracts/branch/master/graph/badge.svg?token=LD45D8GXZB)](https://codecov.io/gh/ArturLavrov/DeclarativeContracts)
 
 
-### <center><i>Lightweight library that enforce design by contract approach in clean and declarative manner</i></center>
+<b><i><h3>Lightweight library that enforce design by contract approach in clean and declarative manner</h3></i></b>
 
 
 Design by contract is not a brand new, but really powerful technique that could make software reliable and safe from bugs. If you not familiar with this idea, please check [this link.](https://www.eiffel.org/doc/solutions/Design_by_Contract_and_Assertions)
