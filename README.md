@@ -52,15 +52,25 @@ For instance, above checks could be done in the following manner:
 Moreover `Is` and `Has` classes provide a lot of other useful methods such as: 
 
 Is.Null
+
 Is.NotNull
+
 Is.Default
+
 Is.NotDefault
+
 Is.NotOrEmptyString
+
 Is.Positive
+
 Is.Negative
+
 Is.False
+
 Is.True
+
 Is.Odd
+
 Is.Even
 
 ## Postcondition
