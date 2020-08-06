@@ -23,8 +23,6 @@ For example:
         //method body implementation code
 
     }
-or
-
 The following lines is a little bit clumsy and hard to read. For solving this issue DeclarativeContracts contains a lot of out of the box functions that incapsulate required functionality
 
 For instance, above checks could be done in the following manner:
