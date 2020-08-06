@@ -25,14 +25,6 @@ For example:
     }
 or
 
-    public void IncreaseOrderAmount(int orderAmount)
-    {
-        Require.That(orderAmount, (orderAmount) => orderAmount > 0)
-
-        //method body implementation code
-
-    }
-
 The following lines is a little bit clumsy and hard to read. For solving this issue DeclarativeContracts contains a lot of out of the box functions that incapsulate required functionality
 
 For instance, above checks could be done in the following manner:
@@ -40,15 +32,6 @@ For instance, above checks could be done in the following manner:
     public void CheckClientInfo(Client client)
     {
         Require.That(clinet, Is.NotNull);
-
-        //TODO: method code
-
-    }
-   or
-   
-    public void IncreaseOrderAmount(int orderAmount)
-    {
-        Require.That(orderAmount, orderAmount.IsPositive)
 
         //TODO: method code
 
