@@ -131,6 +131,36 @@ namespace DeclarativeContracts.Tests.Precondition
                 )
             );
         }
+
+        [Test]
+        public void ForAll_ListWithAllElementGreaterThanZero_ContractViolationExceptionDoesNotThrows()
+        {
+            List<int> elementsCollection = new List<int>
+            {
+                1,3,4
+            };
+
+            Assert.DoesNotThrow(() => Require.ForAll(elementsCollection, (element) => element > 0));
+        }
+
+        [Test]
+        public void ForAll_ListWith3ElementsOneIsLessThanZero_ThrowsContractViolationException()
+        {
+            List<int> elementsCollection = new List<int>
+            {
+                -1,3,4
+            };
+
+            Assert.Throws(
+                typeof(ContractViolationException),
+                () => Require.ForAll(
+                    elementsCollection,
+                    ((element) => element > 0)
+                )
+            );
+        }
+
+        
     }
 
     internal class Customer

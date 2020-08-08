@@ -36,7 +36,7 @@ namespace DeclarativeContracts.Precondition
         public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
            bool predicateResult = false;
-           if(predicate == null){
+           if (predicate == null) {
                throw new ArgumentException("Predicate is null.");
            }
 
@@ -48,8 +48,7 @@ namespace DeclarativeContracts.Precondition
             {
                 throw new ContractViolationException(
                     "Exception occured during predicate execution.See inner exception for details", 
-                    ex)
-                ;
+                    ex);
             }
 
             if(!predicateResult)
@@ -67,26 +66,20 @@ namespace DeclarativeContracts.Precondition
             }
         }
         
-        public static void That(Func<bool> func)
-        {
-            try
-            { 
-                func.Invoke();
-            }
-            catch (Exception exception)
-            {
-                throw new ContractViolationException(
-                    "Contract was violated. Functor throw an exception instead returning true.",
-                    innerException: exception);
-            }
-
-        }
-        
         public static void ForAll<TElement>(IEnumerable<TElement> elementsSequence, Predicate<TElement> predicate)
         {
-            foreach (var element in elementsSequence)
+            try{
+                foreach (var element in elementsSequence)
+                {
+                    if(!predicate(element))
+                    {
+                        throw new ContractViolationException($"Contact was violated.Predicate for elemet {element} retund false.");
+                    }
+                }
+            }
+            catch(Exception ex)
             {
-                predicate(element);
+                throw new ContractViolationException("Contact was violated because an unhandled exception occured.", ex);
             }
         }
 
