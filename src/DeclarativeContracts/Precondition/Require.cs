@@ -7,10 +7,26 @@ namespace DeclarativeContracts.Precondition
 {
     public static class Require
     {
-        public static void That<TElement, TException>(Func<TElement> memberSelector, Predicate<TElement> predicate)
+        public static void That<TEntity, TMember>(TEntity entity, Func<TEntity, TMember> entityMemberSelctor, Predicate<TMember> predicate)
         {
-            var member = memberSelector.Invoke();
-            if (!predicate(member))
+            if(entity == null || entityMemberSelctor == null || predicate == null){
+                throw new ArgumentException("Invalid argument was passed");
+            }
+
+            var member = entityMemberSelctor.Invoke(entity);
+            bool predicateResult = false;
+            try{
+                predicateResult =  predicate.Invoke(member);
+            }
+            catch(Exception ex)
+            {
+                throw new ContractViolationException(
+                    "Exception occured during predicate execution.See inner exception for details", 
+                    ex)
+                ;
+            }
+
+            if(!predicateResult)
             {
                 throw new ContractViolationException("Contact precondition was violated. Expected that predicate returns true.");
             }
