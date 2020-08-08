@@ -15,6 +15,7 @@ namespace DeclarativeContracts.Precondition
 
             var member = entityMemberSelctor.Invoke(entity);
             bool predicateResult = false;
+            
             try{
                 predicateResult =  predicate.Invoke(member);
             }
@@ -32,9 +33,26 @@ namespace DeclarativeContracts.Precondition
             }
         }
 
-        public static void That<TElement>(TElement element, Predicate<TElement> predicate, string exceptionText = "")
+        public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
-            if (!predicate(element))
+           bool predicateResult = false;
+           if(predicate == null){
+               throw new ArgumentException("Predicate is null.");
+           }
+
+
+            try{
+                predicateResult =  predicate.Invoke(element);
+            }
+            catch(Exception ex)
+            {
+                throw new ContractViolationException(
+                    "Exception occured during predicate execution.See inner exception for details", 
+                    ex)
+                ;
+            }
+
+            if(!predicateResult)
             {
                 throw new ContractViolationException("Contact precondition was violated. Expected that predicate returns true.");
             }
@@ -64,11 +82,11 @@ namespace DeclarativeContracts.Precondition
 
         }
         
-        public static void ForAll<TElement>(IEnumerable<TElement> elementsSequence, Action<TElement> actionToCall)
+        public static void ForAll<TElement>(IEnumerable<TElement> elementsSequence, Predicate<TElement> predicate)
         {
             foreach (var element in elementsSequence)
             {
-                actionToCall(element);
+                predicate(element);
             }
         }
 

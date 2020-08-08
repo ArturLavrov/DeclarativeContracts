@@ -105,6 +105,32 @@ namespace DeclarativeContracts.Tests.Precondition
                 null)
             );
         }
+
+        [Test]
+        public void That_ElementIsNotNullPredicateNull_ContractViolationException()
+        {
+            Assert.Throws(typeof(ArgumentException), () => Require.That("string", null));
+        }
+
+        [Test]
+        public void That_ValidArguemntsStringIsNotNull_ContractViolationExceptionDoesNotThrows()
+        {
+            Assert.DoesNotThrow(() => Require.That<String>("string", (item) => item.Length == 6));
+        }
+        
+        [Test]
+        public void That_ValidArgumentsPredicateThowAnException_ThrowsContractViolationException()
+        {
+            Assert.Throws(
+                typeof(ContractViolationException),
+                () => Require.That<String>(
+                    "element",
+                    (item) => {
+                        throw new Exception("Predicate Exception");
+                    }
+                )
+            );
+        }
     }
 
     internal class Customer
