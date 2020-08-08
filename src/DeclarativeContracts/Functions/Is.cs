@@ -49,15 +49,14 @@ namespace DeclarativeContracts.Functions
             return !element;
         }
 
-        public static bool IsOdd(int numberToCheck)
+        public static bool Odd(int numberToCheck)
         {
-            throw new NotImplementedException("");
+            return (numberToCheck % 2 != 0);
         }
         
-        public static bool IsEven(int numberToCheck)
+        public static bool Even(int numberToCheck)
         {
-            throw new NotImplementedException("");
-        }
-        
+            return (numberToCheck % 2 == 0);
+        } 
     }
 }

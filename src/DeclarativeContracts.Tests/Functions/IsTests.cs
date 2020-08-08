@@ -115,5 +115,26 @@ namespace DeclarativeContracts.Tests.Functions
         {
             Assert.True(Is.False(false));
         }
+
+        [Test]
+        public void IsOdd_OddNunber_ReturnTrue()
+        {
+            int oddNumber = 11;
+            Assert.True(Is.Odd(oddNumber));
+        }
+
+        [Test]
+        public void IsEven_EvenNumebr_ReturnTrue()
+        {
+            int evenNumber = 10;
+            Assert.That(Is.Even(evenNumber));
+        }
+
+        [Test]
+        public void IsEven_Zero_ReturnTrue()
+        {
+            int zero = 0;
+            Assert.True(Is.Even(zero));
+        }
     }
 }
