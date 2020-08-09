@@ -160,7 +160,19 @@ namespace DeclarativeContracts.Tests.Precondition
             );
         }
 
-        
+        [Test]
+        public void That_ContractViolatedPassCustomException_CustomExceptionWasThrows()
+        {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
+            
+            Assert.Throws(
+                typeof(ArgumentException), 
+                () => Require.That(customer.Name, n => n.Length > 5, new ArgumentException()));
+        }
     }
 
     internal class Customer
@@ -170,6 +182,6 @@ namespace DeclarativeContracts.Tests.Precondition
 
         public DateTime DateOfBirth {get;set;}
 
-        public List<String> FavoritePharses {get;set;}
+        public List<String> FavoritePhrases {get;set;}
     }
 }
