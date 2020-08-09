@@ -1,5 +1,5 @@
 <p align="center">
-  <img style="float: right;" src="https://www.clipartkey.com/mpngs/m/20-203198_handshake-clipart-hand-shake-clip-art-png.png" width=400px; height=300px>
+  <img style="float: right;" src="https://www.clipartkey.com/mpngs/m/20-203198_handshake-clipart-hand-shake-clip-art-png.png" width=200px; height=150px>
 </p>
 
 # DeclarativeContracts    ![Build](https://github.com/ArturLavrov/DeclarativeContracts/workflows/Build/badge.svg?branch=master) [![codecov](https://codecov.io/gh/ArturLavrov/DeclarativeContracts/branch/master/graph/badge.svg?token=LD45D8GXZB)](https://codecov.io/gh/ArturLavrov/DeclarativeContracts) ![Nuget](https://img.shields.io/nuget/vpre/DeclarativeContracts?style=plastic)
