@@ -24,11 +24,7 @@ namespace DeclarativeContracts.Functions
                     return false;
                 }
 
-                if (enumerator.MoveNext())
-                {
-                    return false;
-                }
-                return true;
+                return !enumerator.MoveNext();
             }
         }
     }
