@@ -9,69 +9,66 @@ namespace DeclarativeContracts.Precondition
     {
         public static void That<TEntity, TMember>(TEntity entity, Func<TEntity, TMember> entityMemberSelector, Predicate<TMember> predicate)
         {
-            bool predicateResult;
+            if (entity == null || entityMemberSelector == null || predicate == null)
+            {
+                throw new ArgumentException("entityMemberSelector could not be null.Please check the following doc how to properly use lib");
+            }
             
-            try
-            {
-                var member = entityMemberSelector.Invoke(entity);
-                predicateResult =  predicate.Invoke(member);
-            }
-            catch(Exception ex)
-            {
-                throw new ContractViolationException(
-                    "Exception occured during predicate execution.See inner exception for details", 
-                    ex);
-            }
-
-            if(!predicateResult)
-            {
-                throw new ContractViolationException("Contact precondition was violated. Expected that predicate returns true.");
-            }
+            var member = entityMemberSelector(entity);
+            InternalThat(member, predicate);
         }
 
         public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
-           bool predicateResult;
-           
-           try{
-               predicateResult =  predicate.Invoke(element);
-           }
-           catch(Exception ex)
-           {
-               throw new ContractViolationException(
-                   "Exception occured during predicate execution.See inner exception for details", 
-                   ex);
-           }
+            if (predicate == null)
+            {
+                throw new ArgumentException("Predicate could not be null.Please check the following doc how to properly use lib");
+            }
 
-           if(!predicateResult)
-           {
-               throw new ContractViolationException("Contact precondition was violated. Expected that predicate returns true.");
-           }
+            InternalThat(element, predicate);
         }
 
         public static void That<TElement, TException>(TElement element, Predicate<TElement> predicate,
             TException exceptionToThrow) where TException : Exception, new()
         {
+            if (predicate == null)
+            {
+                throw new ArgumentException("Predicate could not be null.Please check the following doc how to properly use lib");
+            }
+            
+            InternalThat(element, predicate, exceptionToThrow);
+        }
+        
+        private static void InternalThat<TMember>(TMember member, Predicate<TMember> predicate, Exception exceptionToThrow = null)
+        {
             bool predicateResult;
-           
+            
             try
             {
-                predicateResult =  predicate.Invoke(element);
+                predicateResult =  predicate.Invoke(member);
             }
             catch(Exception ex)
             {
-                throw new ContractViolationException(
-                    "Exception occured during predicate execution.See inner exception for details", ex);
+                throw exceptionToThrow ?? 
+                      new ContractViolationException(
+                          "Exception occured during predicate execution.See inner exception for details", ex);
             }
 
             if(!predicateResult)
             {
-                throw exceptionToThrow;
+                throw exceptionToThrow ?? 
+                      new ContractViolationException(
+                          "Contact precondition was violated. Expected that predicate returns true.");
             }
         }
         
         public static void ForAll<TElement>(IEnumerable<TElement> elementsSequence, Predicate<TElement> predicate)
         {
+            if (predicate == null)
+            {
+                throw new ArgumentException("predicate could not be null.Please check the following doc how to properly use lib");
+            }
+
             try
             {
                 foreach (var element in elementsSequence)
