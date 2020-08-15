@@ -34,7 +34,7 @@ namespace DeclarativeContracts.Functions
             return elementToCheck > 0;
         }
 
-        public static bool Negative(int elementToCheck)
+        public static bool Negative (int elementToCheck)
         {
             return elementToCheck < 0;
         }
