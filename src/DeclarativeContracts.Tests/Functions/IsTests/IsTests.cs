@@ -1,10 +1,11 @@
 using System;
 using NUnit.Framework;
 using Is = DeclarativeContracts.Functions.Is;
+
 namespace DeclarativeContracts.Tests.Functions
 {
     [TestFixture]
-    public class IsTests
+    public partial class IsTests
     {
         [Test]
         public void Null_NullValue_ReturnsTrue()
@@ -77,34 +78,6 @@ namespace DeclarativeContracts.Tests.Functions
         }
 
         [Test]
-        public void IsPositive_NotNegativeInteger_ReturnsTrue()
-        {
-            int notNegativeInteger = 123;
-            Assert.True(Is.Positive(notNegativeInteger));
-        }
-
-        [Test]
-        public void IsPositive_NegativeInteger_ReturnFalse()
-        {
-            int negativeInteger = -1;
-            Assert.False(Is.Positive(negativeInteger));
-        }
-        
-        [Test]
-        public void IsNegative_NegativeInteger_ReturnsTrue()
-        {
-            int notNegativeInteger = -1123;
-            Assert.True(Is.Negative(notNegativeInteger));
-        }
-
-        [Test]
-        public void IsNegative_NonNegativeInteger_ReturnsFalse()
-        {
-            int negativeInteger = 1;
-            Assert.False(Is.Negative(negativeInteger));
-        }
-
-        [Test]
         public void True_True_ReturnsTrue()
         {
             Assert.True(Is.True(true));
@@ -114,27 +87,6 @@ namespace DeclarativeContracts.Tests.Functions
         public void True_False_ReturnsFalse()
         {
             Assert.True(Is.False(false));
-        }
-
-        [Test]
-        public void IsOdd_OddNunber_ReturnTrue()
-        {
-            int oddNumber = 11;
-            Assert.True(Is.Odd(oddNumber));
-        }
-
-        [Test]
-        public void IsEven_EvenNumebr_ReturnTrue()
-        {
-            int evenNumber = 10;
-            Assert.That(Is.Even(evenNumber));
-        }
-
-        [Test]
-        public void IsEven_Zero_ReturnTrue()
-        {
-            int zero = 0;
-            Assert.True(Is.Even(zero));
         }
     }
 }
