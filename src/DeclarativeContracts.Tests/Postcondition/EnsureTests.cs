@@ -1,3 +1,7 @@
+using System;
+using DeclarativeContracts.Exceptions;
+using DeclarativeContracts.Postcondition;
+using DeclarativeContracts.Tests.Precondition;
 using NUnit.Framework;
 
 namespace DeclarativeContracts.Tests.Postcondition
@@ -5,10 +9,63 @@ namespace DeclarativeContracts.Tests.Postcondition
     [TestFixture]
     public class EnsureTests
     {
-        [Test]
-        public void EnsureTest()
+         [Test]
+        public void Ensure_ValidArgumentsAndContractNotViolated_ContractViolationExceptionDoesNotThrows()
         {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
+
+            Assert.DoesNotThrow
+            (
+                () => Ensure.That(
+                        customer, 
+                        customer => customer.Name, 
+                        (name) => name != null
+                    )
+            );
+        }
+
+        [Test]
+        public void Ensure_ValidArgumentsAndContractViolated_ContractViolationExceptionThrows()
+        {
+            var customer = new Customer()
+            {
+                Name = null,
+                LastName = "Osbourne"
+            };
+
+            Assert.Throws
+            (
+                typeof(ContractViolationException),
+                () => Ensure.That(
+                    customer, 
+                    customer => customer.Name, 
+                    (name) => name != null
+                )
+            );
+        }
+       
+        [Test]
+        public void Ensure_ValidArguemntsStringIsNotNull_ContractViolationExceptionDoesNotThrows()
+        {
+            Assert.DoesNotThrow(() => Ensure.That<String>("string", (item) => item.Length == 6));
+        }
+
+        [Test]
+        public void That_ContractViolatedPassCustomException_CustomExceptionWasThrows()
+        {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
             
+            Assert.Throws(
+                typeof(ArgumentException), 
+                () => Ensure.That(customer.Name, n => n.Length > 5, new ArgumentException()));
         }
     }
 }

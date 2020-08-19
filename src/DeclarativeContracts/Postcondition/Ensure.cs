@@ -8,17 +8,11 @@ namespace DeclarativeContracts.Postcondition
     /// </summary>
     public class Ensure
     {
-        /// <summary>
-        /// Verified that selected member satisfied specified predicate
-        /// </summary>
-        /// <param name="memberSelector">Func that select specified member to check</param>
-        /// <param name="predicate">Predicate that checks selected member</param>
-        /// <typeparam name="TElement">Element type to check</typeparam>
-        /// <typeparam name="TException">Exception type to throw</typeparam>
-        /// <returns></returns>
-        public static void That<TElement>(Func<TElement> memberSelector, Predicate<TElement> predicate)
+        public static void That<TEntity, TMember>(TEntity entity, Func<TEntity, TMember> memberSelector, Predicate<TMember> predicate)
         {
-            var member = memberSelector.Invoke();
+            
+            
+            var member = memberSelector.Invoke(entity);
             if (!predicate(member))
             {
                 throw new ContractViolationException("Contact postcondition was violated. Expected that predicate returns true.");
