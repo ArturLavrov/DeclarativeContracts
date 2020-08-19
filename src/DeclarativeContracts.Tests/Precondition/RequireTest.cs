@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using DeclarativeContracts.Precondition;
@@ -22,7 +22,7 @@ namespace DeclarativeContracts.Tests.Precondition
                 (
                     () => Require.That(
                             customer, 
-                            customer => customer.Name, 
+                            с => с.Name, 
                             (name) => name != null
                         )
                 );
@@ -41,7 +41,7 @@ namespace DeclarativeContracts.Tests.Precondition
                     typeof(ContractViolationException),
                     () => Require.That(
                         customer, 
-                        customer => customer.Name, 
+                        с => с.Name, 
                         (name) => name != null
                     )
                 );
@@ -62,7 +62,7 @@ namespace DeclarativeContracts.Tests.Precondition
                     typeof(ArgumentException),
                     () => Require.That(
                         customer, 
-                        customer => customer.Name, 
+                        с => с.Name, 
                         (name) => name != null
                     )
                 );
@@ -82,7 +82,7 @@ namespace DeclarativeContracts.Tests.Precondition
                 typeof(ContractViolationException), 
                     () =>  Require.That(
                     customer, 
-                    customer => customer.Name, 
+                    с => с.Name, 
                     (name) => name.StartsWith("O")
                 )
             );
@@ -101,7 +101,7 @@ namespace DeclarativeContracts.Tests.Precondition
                 typeof(ArgumentException), 
                 () =>  Require.That(
                 customer, 
-                customer => customer.Name, 
+                с => с.Name, 
                 null)
             );
         }
