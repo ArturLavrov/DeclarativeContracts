@@ -1,5 +1,6 @@
 using System;
 using DeclarativeContracts.Exceptions;
+using DeclarativeContracts.Utilities;
 
 namespace DeclarativeContracts.Postcondition
 {
@@ -8,10 +9,19 @@ namespace DeclarativeContracts.Postcondition
     /// </summary>
     public class Ensure
     {
+        /// <summary>
+        ///  Method that verify element satisfied specified predicate
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="memberSelector"></param>
+        /// <param name="predicate"></param>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <typeparam name="TMember"></typeparam>
+        /// <returns></returns>
         public static void That<TEntity, TMember>(TEntity entity, Func<TEntity, TMember> memberSelector, Predicate<TMember> predicate)
         {
-            
-            
+            ArgumentChecker.CheckArgumentsNull(memberSelector, predicate);
+
             var member = memberSelector.Invoke(entity);
             if (!predicate(member))
             {
@@ -27,6 +37,8 @@ namespace DeclarativeContracts.Postcondition
         /// <typeparam name="TElement">Element type to check</typeparam>
         public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
+            ArgumentChecker.CheckArgumentsNull(predicate, predicate);
+
             if (!predicate(element))
             {
                 throw new ContractViolationException("Contact postcondition was violated. Expected that predicate returns true.");
@@ -45,6 +57,8 @@ namespace DeclarativeContracts.Postcondition
         public static void That<TElement, TException>(TElement element, Predicate<TElement> predicate,
             TException exceptionToThrow) where TException : Exception, new()
         {
+            ArgumentChecker.CheckArgumentsNull(predicate, exceptionToThrow);
+            
             if (!predicate(element))
             {
                 throw exceptionToThrow;
