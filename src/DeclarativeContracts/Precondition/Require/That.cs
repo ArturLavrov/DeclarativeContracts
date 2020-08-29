@@ -18,10 +18,9 @@ namespace DeclarativeContracts.Precondition
         /// <typeparam name="TEntity">Entity type</typeparam>
         /// <typeparam name="TMember">Entity member type</typeparam>
         /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
-        /// <throws>Throws ArgumentException if element does not satisfy predicate</throws>
         public static void That<TEntity, TMember>(TEntity entity, Func<TEntity, TMember> entityMemberSelector, Predicate<TMember> predicate)
         {
-            ArgumentChecker.CheckArgumentsNull(entity, entityMemberSelector, predicate);
+            ArgumentChecker.CheckArgumentsNull(entityMemberSelector, predicate);
             
             var member = entityMemberSelector(entity);
             InternalThat(member, predicate);
@@ -34,10 +33,9 @@ namespace DeclarativeContracts.Precondition
         /// <param name="predicate">Predicated that checks member</param>
         /// <typeparam name="TElement">Element type</typeparam>
         /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
-        /// <throws>Throws ArgumentException if element does not satisfy predicate</throws>
         public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
-            ArgumentChecker.CheckArgumentsNull(element, predicate);
+            ArgumentChecker.CheckArgumentsNull(predicate);
 
             InternalThat(element, predicate);
         }
@@ -50,10 +48,11 @@ namespace DeclarativeContracts.Precondition
         /// <param name="exceptionToThrow">Custom exception to throw instead of contract violation exception</param>
         /// <typeparam name="TElement">Element type</typeparam>
         /// <typeparam name="TException">Exception type</typeparam>
+        /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
         public static void That<TElement, TException>(TElement element, Predicate<TElement> predicate,
             TException exceptionToThrow) where TException : Exception, new()
         {
-            ArgumentChecker.CheckArgumentsNull(element, predicate);
+            ArgumentChecker.CheckArgumentsNull(predicate);
             
             InternalThat(element, predicate, exceptionToThrow);
         }

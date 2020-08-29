@@ -67,5 +67,29 @@ namespace DeclarativeContracts.Tests.Postcondition
                 typeof(ArgumentException), 
                 () => Ensure.That(customer.Name, n => n.Length > 5, new ArgumentException()));
         }
+
+        [Test]
+        public void That_EntityIsNotNullPredicateIsNull_ThrowsArgumentException()
+        {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
+
+            Assert.Throws(typeof(ArgumentException), () => Ensure.That(customer, (c) => c.Name,  null));
+        }
+        
+        [Test]
+        public void That_PredicateIsNull_ThrowsArgumentException()
+        {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
+
+            Assert.Throws(typeof(ArgumentException), () => Ensure.That(customer, null));
+        }
     }
 }

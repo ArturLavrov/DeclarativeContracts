@@ -46,28 +46,6 @@ namespace DeclarativeContracts.Tests.Precondition
                     )
                 );
         }
-        
-        [Test]
-        public void That_EntityToChekcIsNull_ContractViolationExceptionIsThrows()
-        {
-            var customer = new Customer()
-            {
-                Name = "Ozzy",
-                LastName = "Osbourne"
-            };
-
-            customer = null;
-
-            Assert.Throws(
-                    typeof(ArgumentException),
-                    () => Require.That(
-                        customer, 
-                        с => с.Name, 
-                        (name) => name != null
-                    )
-                );
-        }
-
 
         [Test]
         public void That_CustomerNameSelectorIsNullPredicateNotNull_ArgumentExceptionThrows()
