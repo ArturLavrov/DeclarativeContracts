@@ -151,6 +151,29 @@ namespace DeclarativeContracts.Tests.Precondition
                 typeof(ArgumentException), 
                 () => Require.That(customer.Name, n => n.Length > 5, new ArgumentException()));
         }
+
+
+        [Test]
+        public void That_TrueForAllElements_ReturnTrue()
+        {
+           var collection = new List<string>(){ "Hello", "World"};
+            Assert.DoesNotThrow(() => Require.TrueForAll(collection, (item) => item.Length > 2));
+        }
+
+        [Test]
+        public void That_FalseForOneElementFromCollection_ContractViolationExceptionWasThrown()
+        {
+            var collection = new List<string>(){ "o", "World"};
+            Assert.Throws(typeof(ContractViolationException), () => Require.TrueForAll(collection, (item) => item.Length > 2));
+        }
+
+        [Test]
+        public void That_PredicateForApplyIsNull_ArgumentExceptionWasThrown()
+        {
+            var collection = new List<string>(){ "o", "World"};
+            Assert.Throws(typeof(ArgumentException), () => Require.TrueForAll(collection, null));
+        }
+
     }
 
     internal class Customer

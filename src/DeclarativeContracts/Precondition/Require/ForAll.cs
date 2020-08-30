@@ -49,6 +49,8 @@ namespace DeclarativeContracts.Precondition
         /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
         public static void TrueForAll<TElement>(IEnumerable<TElement> elementsSequence, Predicate<TElement> predicate)
         {
+            ArgumentChecker.CheckArgumentsNull(predicate);
+
             if (elementsSequence.Any(element => !predicate(element)))
             {
                 throw new ContractViolationException();
