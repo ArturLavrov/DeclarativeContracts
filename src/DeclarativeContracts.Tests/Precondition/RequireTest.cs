@@ -173,7 +173,30 @@ namespace DeclarativeContracts.Tests.Precondition
             var collection = new List<string>(){ "o", "World"};
             Assert.Throws(typeof(ArgumentException), () => Require.TrueForAll(collection, null));
         }
+        
+        [Test]
+        public void That_FuncThatReturnsTrue_ContractViolationExceptionDoesNotThrows()
+        {
+            Func<bool> functor = () => true;
 
+            Assert.DoesNotThrow(() => Require.That(functor));
+        }
+
+        [Test]
+        public void That_FuncThatReturnsFalse_ContractViolationExceptionWasThrown()
+        {
+            Func<bool> functor = () => false;
+
+            Assert.Throws(typeof(ContractViolationException), () => Require.That(functor));
+        }
+
+        [Test]
+        public void That_FuncIsNull_ArgumentExceptionWasThrown()
+        {
+            Func<bool> functor = null;
+
+            Assert.Throws(typeof(ArgumentException), () => Require.That(functor));
+        }
     }
 
     internal class Customer

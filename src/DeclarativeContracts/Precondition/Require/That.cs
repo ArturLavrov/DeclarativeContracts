@@ -18,6 +18,7 @@ namespace DeclarativeContracts.Precondition
         /// <typeparam name="TEntity">Entity type</typeparam>
         /// <typeparam name="TMember">Entity member type</typeparam>
         /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
+        /// <throws>Throws ArgumentException if entityMemberSelector or predicate is null</throws>
         public static void That<TEntity, TMember>(TEntity entity, Func<TEntity, TMember> entityMemberSelector, Predicate<TMember> predicate)
         {
             ArgumentChecker.CheckArgumentsNull(entityMemberSelector, predicate);
@@ -33,6 +34,7 @@ namespace DeclarativeContracts.Precondition
         /// <param name="predicate">Predicated that checks member</param>
         /// <typeparam name="TElement">Element type</typeparam>
         /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
+        /// <throws>Throws ArgumentException if predicate is null</throws>
         public static void That<TElement>(TElement element, Predicate<TElement> predicate)
         {
             ArgumentChecker.CheckArgumentsNull(predicate);
@@ -57,7 +59,31 @@ namespace DeclarativeContracts.Precondition
             InternalThat(element, predicate, exceptionToThrow);
         }
         
-        
+        /// <summary>
+        /// Method that verify that execute predicate returns true
+        /// </summary>
+        /// <param name="predicate">Predicate that should return true</param>
+        /// <throws>Throws ContractViolationException if element does not satisfy predicate</throws>
+        /// <throws>Throws ArgumentException if predicate is null</throws>
+        public static void That(Func<bool> predicate)	
+        {	
+            ArgumentChecker.CheckArgumentsNull(predicate);
+
+            try	
+            { 	
+                var result = predicate.Invoke();	
+                if(!result){
+                    throw new ContractViolationException();
+                }
+            }	
+            catch (Exception exception)	
+            {	
+                throw new ContractViolationException(	
+                    "Contract was violated. Functor throw an exception instead returning true.",	
+                    innerException: exception);	
+            }	
+         }
+
         private static void InternalThat<TMember>(TMember member, Predicate<TMember> predicate, Exception exceptionToThrow = null)
         {
             bool predicateResult;
