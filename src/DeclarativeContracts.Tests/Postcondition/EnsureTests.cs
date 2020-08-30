@@ -91,5 +91,17 @@ namespace DeclarativeContracts.Tests.Postcondition
 
             Assert.Throws(typeof(ArgumentException), () => Ensure.That(customer, null));
         }
+
+        [Test]
+        public void That_PredicateRetursFalse_ThrowsContractViolationException()
+        {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
+
+            Assert.Throws(typeof(ContractViolationException), () => Ensure.That(customer.Name, (name) => name.Length > 10));
+        }
     }
 }
