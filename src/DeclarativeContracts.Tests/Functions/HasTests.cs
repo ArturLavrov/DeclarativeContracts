@@ -65,5 +65,12 @@ namespace DeclarativeContracts.Tests.Functions
             List<string> nullList = null;
             Assert.False(Has.OnlyOneValue(nullList));
         }
+
+        [Test]
+        public void OnlyOneValue_EmptySequence_ReturnFalse()
+        {
+            List<string> emptyList = new List<string>();
+            Assert.False(Has.OnlyOneValue(emptyList));
+        }
     }
 }
