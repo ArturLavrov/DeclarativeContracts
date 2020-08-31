@@ -135,8 +135,6 @@ namespace DeclarativeContracts.Tests.Functions
             Assert.False(Is.Positive(zero));
         }
 
-
-
         [Test]
         public void IsNegative_NegativeInteger_ReturnsTrue()
         {
@@ -149,6 +147,99 @@ namespace DeclarativeContracts.Tests.Functions
         {
             int negativeInteger = 1;
             Assert.False(Is.Negative(negativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_IntegerZero_ReturnsFalse()
+        {
+            int zero = 0;
+            Assert.False(Is.Negative(zero));
+        }
+
+
+        [Test]
+        public void IsNegative_NegativeShort_ReturnsTrue()
+        {
+            short notNegativeInteger = -1123;
+            Assert.True(Is.Negative(notNegativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_NonNegativeShort_ReturnsFalse()
+        {
+            short negativeInteger = 1;
+            Assert.False(Is.Negative(negativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_ShortZero_ReturnsFalse()
+        {
+            short zero = 0;
+            Assert.False(Is.Negative(zero));
+        }
+
+        [Test]
+        public void IsNegative_NegativeLong_ReturnsTrue()
+        {
+            long notNegativeInteger = 11221123;
+            Assert.True(Is.Negative(notNegativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_NonNegativeLong_ReturnsFalse()
+        {
+            long negativeInteger = 1;
+            Assert.False(Is.Negative(negativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_LongZero_ReturnsFalse()
+        {
+            long zero = 0;
+            Assert.False(Is.Negative(zero));
+        }
+
+
+        [Test]
+        public void IsNegative_NegativeFloat_ReturnsTrue()
+        {
+            float notNegativeInteger = 1.1221123f;
+            Assert.True(Is.Negative(notNegativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_NonNegativeFloat_ReturnsFalse()
+        {
+            float negativeInteger = 1f;
+            Assert.False(Is.Negative(negativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_FloatZero_ReturnsFalse()
+        {
+            float zero = 0.0000f;
+            Assert.False(Is.Negative(zero));
+        }
+
+        [Test]
+        public void IsNegative_NegativeDouble_ReturnsTrue()
+        {
+            double notNegativeInteger = 1.122;
+            Assert.True(Is.Negative(notNegativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_NonNegativeDouble_ReturnsFalse()
+        {
+            double negativeInteger = -1.222;
+            Assert.False(Is.Negative(negativeInteger));
+        }
+
+        [Test]
+        public void IsNegative_DoubleZero_ReturnsFalse()
+        {
+            double zero = 0;
+            Assert.False(Is.Negative(zero));
         }
 
         [Test]
