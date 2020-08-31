@@ -50,6 +50,53 @@ namespace DeclarativeContracts.Tests.Functions
 
 
         [Test]
+        public void IsPositive_NotNegativeLong_ReturnsTrue()
+        {
+            long notNegativeLong = 100;
+            Assert.True(Is.Positive(notNegativeLong));
+        }
+
+        [Test]
+        public void IsPositive_NegativeLong_ReturnFalse()
+        {
+            long negativeLong = -1;
+            Assert.False(Is.Positive(negativeLong));
+        }
+
+        [Test]
+        public void IsPositive_LongZero_ReturnFalse()
+        {
+            long zero = 0;
+            Assert.False(Is.Positive(zero));
+        }
+
+
+        [Test]
+        public void IsPositive_NotNegativeFloat_ReturnsTrue()
+        {
+            float notNegativeFloat = 100.99999f;
+            Assert.True(Is.Positive(notNegativeFloat));
+        }
+
+        [Test]
+        public void IsPositive_NegativeFloat_ReturnFalse()
+        {
+            float negativeFloat = -1.1111f;
+            Assert.False(Is.Positive(negativeFloat));
+        }
+
+        [Test]
+        public void IsPositive_FloatZero_ReturnFalse()
+        {
+            float zero = 0.0f;
+            Assert.False(Is.Positive(zero));
+        }
+
+
+
+
+
+        [Test]
         public void IsNegative_NegativeInteger_ReturnsTrue()
         {
             int notNegativeInteger = -1123;
