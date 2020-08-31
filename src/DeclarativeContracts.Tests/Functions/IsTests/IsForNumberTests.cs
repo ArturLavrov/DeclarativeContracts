@@ -181,15 +181,15 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNegative_NegativeLong_ReturnsTrue()
         {
-            long notNegativeInteger = 11221123;
-            Assert.True(Is.Negative(notNegativeInteger));
+            long negativeInteger = -11221123;
+            Assert.True(Is.Negative(negativeInteger));
         }
 
         [Test]
         public void IsNegative_NonNegativeLong_ReturnsFalse()
         {
-            long negativeInteger = 1;
-            Assert.False(Is.Negative(negativeInteger));
+            long nonNegativeInteger = 1;
+            Assert.False(Is.Negative(nonNegativeInteger));
         }
 
         [Test]
@@ -203,8 +203,8 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNegative_NegativeFloat_ReturnsTrue()
         {
-            float notNegativeInteger = 1.1221123f;
-            Assert.True(Is.Negative(notNegativeInteger));
+            float negativeInteger = -1.1221123f;
+            Assert.True(Is.Negative(negativeInteger));
         }
 
         [Test]
@@ -224,15 +224,15 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNegative_NegativeDouble_ReturnsTrue()
         {
-            double notNegativeInteger = 1.122;
-            Assert.True(Is.Negative(notNegativeInteger));
+            double negativeDouble = -1.122;
+            Assert.True(Is.Negative(negativeDouble));
         }
 
         [Test]
         public void IsNegative_NonNegativeDouble_ReturnsFalse()
         {
-            double negativeInteger = -1.222;
-            Assert.False(Is.Negative(negativeInteger));
+            double nonNegativeDouble = 1.222;
+            Assert.False(Is.Negative(nonNegativeDouble));
         }
 
         [Test]
