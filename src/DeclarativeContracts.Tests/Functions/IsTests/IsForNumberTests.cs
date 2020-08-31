@@ -18,6 +18,36 @@ namespace DeclarativeContracts.Tests.Functions
             int negativeInteger = -1;
             Assert.False(Is.Positive(negativeInteger));
         }
+        
+        [Test]
+        public void IsPositive_IntegerZero_ReturnFalse()
+        {
+            int zero = 0;
+            Assert.False(Is.Positive(zero));
+        }
+        
+
+        [Test]
+        public void IsPositive_NotNegativeShort_ReturnsTrue()
+        {
+            short notNegativeInteger = 100;
+            Assert.True(Is.Positive(notNegativeInteger));
+        }
+
+        [Test]
+        public void IsPositive_NegativeShort_ReturnFalse()
+        {
+            short negativeInteger = -1;
+            Assert.False(Is.Positive(negativeInteger));
+        }
+
+        [Test]
+        public void IsPositive_ShortZero_ReturnFalse()
+        {
+            short zero = 0;
+            Assert.False(Is.Positive(zero));
+        }
+
 
         [Test]
         public void IsNegative_NegativeInteger_ReturnsTrue()
