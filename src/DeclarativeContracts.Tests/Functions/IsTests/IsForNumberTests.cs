@@ -92,7 +92,48 @@ namespace DeclarativeContracts.Tests.Functions
             Assert.False(Is.Positive(zero));
         }
 
+        [Test]
+        public void IsPositive_NotNegativeDouble_ReturnsTrue()
+        {
+            double notNegativeFloat = 12.3;
+            Assert.True(Is.Positive(notNegativeFloat));
+        }
 
+        [Test]
+        public void IsPositive_NegativeDouble_ReturnFalse()
+        {
+            double negativeFloat = -12.3;
+            Assert.False(Is.Positive(negativeFloat));
+        }
+
+        [Test]
+        public void IsPositive_DoubleZero_ReturnFalse()
+        {
+            double zero = 0;
+            Assert.False(Is.Positive(zero));
+        }
+
+
+        [Test]
+        public void IsPositive_NotNegativeDecimal_ReturnsTrue()
+        {
+            decimal notNegativeFloat = 12.3m;
+            Assert.True(Is.Positive(notNegativeFloat));
+        }
+
+        [Test]
+        public void IsPositive_NegativeDecimal_ReturnFalse()
+        {
+            decimal negativeFloat = -12.3m;
+            Assert.False(Is.Positive(negativeFloat));
+        }
+
+        [Test]
+        public void IsPositive_DecimalZero_ReturnFalse()
+        {
+            decimal zero = 0m;
+            Assert.False(Is.Positive(zero));
+        }
 
 
 
