@@ -344,6 +344,99 @@ namespace DeclarativeContracts.Tests.Functions
         }
 
         [Test]
+        public void IsNotZero_ShortZero_ReturnFale()
+        {
+            short zero = 0;
+            Assert.False(Is.NotZero(zero));
+        }
+
+        
+        [Test]
+        public void IsNotZero_ShortNotZero_ReturnTrue()
+        {
+            short notZero = 8;
+            Assert.True(Is.NotZero(notZero));
+        }
+
+        [Test]
+        public void IsNotZero_IntZero_ReturnFale()
+        {
+            int zero = 0;
+            Assert.False(Is.NotZero(zero));
+        }
+
+        
+        [Test]
+        public void IsNotZero_IntNotZero_ReturnTrue()
+        {
+            int notZero = 8;
+            Assert.True(Is.NotZero(notZero));
+        }
+
+        [Test]
+        public void IsNotZero_LongZero_ReturnFale()
+        {
+            int zero = 0;
+            Assert.False(Is.NotZero(zero));
+        }
+
+        
+        [Test]
+        public void IsNotZero_LongNotZero_ReturnTrue()
+        {
+            int notZero = 8;
+            Assert.True(Is.NotZero(notZero));
+        }
+
+        [Test]
+        public void IsNotZero_FloatZero_ReturnFale()
+        {
+            float zero = 0.0f;
+            Assert.False(Is.NotZero(zero));
+        }
+
+        
+        [Test]
+        public void IsNotZero_FloatNotZero_ReturnTrue()
+        {
+            float notZero = 8.000f;
+            Assert.True(Is.NotZero(notZero));
+        }
+
+        [Test]
+        public void IsNotZero_DoubleZero_ReturnFale()
+        {
+            double zero = 0.0;
+            Assert.False(Is.NotZero(zero));
+        }
+
+        
+        [Test]
+        public void IsNotZero_DoubleNotZero_ReturnTrue()
+        {
+            double notZero = 8.000;
+            Assert.True(Is.NotZero(notZero));
+        }
+
+        [Test]
+        public void IsNotZero_DecimalZero_ReturnFale()
+        {
+            double zero = 0.0d;
+            Assert.False(Is.NotZero(zero));
+        }
+
+        
+        [Test]
+        public void IsNotZero_DecimalNotZero_ReturnTrue()
+        {
+            double notZero = 8.000d;
+            Assert.True(Is.NotZero(notZero));
+        }
+
+
+
+
+        [Test]
         public void IsOdd_OddNunber_ReturnTrue()
         {
             int oddNumber = 11;
