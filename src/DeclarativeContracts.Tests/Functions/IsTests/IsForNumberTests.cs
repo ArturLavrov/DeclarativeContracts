@@ -243,6 +243,28 @@ namespace DeclarativeContracts.Tests.Functions
         }
 
         [Test]
+        public void IsNegative_NegativeDecimal_ReturnsTrue()
+        {
+            decimal negativeDecimal = -1.122m;
+            Assert.True(Is.Negative(negativeDecimal));
+        }
+
+
+        [Test]
+        public void IsNegative_NonNegativeDecimal_ReturnsFalse()
+        {
+            decimal negativeDecimal = 1.122m;
+            Assert.False(Is.Negative(negativeDecimal));
+        }
+
+        [Test]
+        public void IsNegative_DecimalZero_ReturnsFalse()
+        {
+            decimal negativeDecimal = 0;
+            Assert.False(Is.Negative(negativeDecimal));
+        }
+
+        [Test]
         public void IsOdd_OddNunber_ReturnTrue()
         {
             int oddNumber = 11;
