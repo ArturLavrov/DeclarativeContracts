@@ -421,7 +421,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNotZero_DecimalZero_ReturnFale()
         {
-            double zero = 0.0d;
+            decimal zero = 0.0M;
             Assert.False(Is.NotZero(zero));
         }
 
@@ -429,7 +429,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNotZero_DecimalNotZero_ReturnTrue()
         {
-            double notZero = 8.000d;
+            decimal notZero = 8.000M;
             Assert.True(Is.NotZero(notZero));
         }
 
