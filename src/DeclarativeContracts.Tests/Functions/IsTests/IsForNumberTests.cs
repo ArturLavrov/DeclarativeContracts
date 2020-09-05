@@ -329,6 +329,22 @@ namespace DeclarativeContracts.Tests.Functions
             Assert.False(Is.Zero(zero));
         }
         
+          [Test]
+        public void IsZero_DoubleZero_ReturnTrue()
+        {
+            double zero = 0.0;
+            Assert.True(Is.Zero(zero));
+        }
+
+        
+        [Test]
+        public void IsZero_DoubleNotZero_ReturnFalse()
+        {
+            double zero = 80924509845;
+            Assert.False(Is.Zero(zero));
+        }
+
+
         [Test]
         public void IsNegative_NonNegativeDecimal_ReturnsFalse()
         {
