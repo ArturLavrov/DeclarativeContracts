@@ -450,6 +450,78 @@ namespace DeclarativeContracts.Tests.Functions
         }
 
         [Test]
+        public void One_ShortOne_ReturnsTrue()
+        {
+            short one = 1;
+            Assert.True(Is.One(one));
+        }
+
+        [Test]
+        public void One_ShortNotOne_ReturnFalse()
+        {
+            short notOne = 2;
+            Assert.False(Is.One(notOne));
+        }
+
+        [Test]
+        public void One_IntOne_ReturnsTrue()
+        {
+            int one = 1;
+            Assert.True(Is.One(one));
+        }
+
+        [Test]
+        public void One_IntNotOne_ReturnFalse()
+        {
+            int notOne = 2;
+            Assert.False(Is.One(notOne));
+        }
+
+        [Test]
+        public void One_LongOne_ReturnsTrue()
+        {
+            long one = 1;
+            Assert.True(Is.One(one));
+        }
+
+        [Test]
+        public void One_LongNotOne_ReturnFalse()
+        {
+            long notOne = 2;
+            Assert.False(Is.One(notOne));
+        }
+
+
+        [Test]
+        public void One_FloatOne_ReturnsTrue()
+        {
+            float one = 1.0f;
+            Assert.True(Is.One(one));
+        }
+
+        [Test]
+        public void One_FloatNotOne_ReturnFalse()
+        {
+            float notOne = 2.44f;
+            Assert.False(Is.One(notOne));
+        }
+
+        [Test]
+        public void One_DoubleOne_ReturnsTrue()
+        {
+            decimal one = 1.0M;
+            Assert.True(Is.One(one));
+        }
+
+        [Test]
+        public void One_DecimalNotOne_ReturnFalse()
+        {
+            decimal notOne = 2.44M;
+            Assert.False(Is.One(notOne));
+        }
+
+
+        [Test]
         public void IsOdd_OddNunber_ReturnTrue()
         {
             int oddNumber = 11;
