@@ -251,6 +251,85 @@ namespace DeclarativeContracts.Tests.Functions
 
 
         [Test]
+        public void IsZero_ShortZero_ReturnTrue()
+        {
+            short zero = 0;
+            Assert.True(Is.Zero(zero));
+        }
+
+        
+        [Test]
+        public void IsZero_ShortNotZero_ReturnFalse()
+        {
+            short zero = 8;
+            Assert.False(Is.Zero(zero));
+        }
+
+
+        [Test]
+        public void IsZero_IntZero_ReturnTrue()
+        {
+            int zero = 0;
+            Assert.True(Is.Zero(zero));
+        }
+
+        
+        [Test]
+        public void IsZero_IntNotZero_ReturnFalse()
+        {
+            int zero = 8;
+            Assert.False(Is.Zero(zero));
+        }
+
+
+        [Test]
+        public void IsZero_LongZero_ReturnTrue()
+        {
+            long zero = 0;
+            Assert.True(Is.Zero(zero));
+        }
+
+        
+        [Test]
+        public void IsZero_LongNotZero_ReturnFalse()
+        {
+            long zero = 8;
+            Assert.False(Is.Zero(zero));
+        }
+
+
+        [Test]
+        public void IsZero_FloatZero_ReturnTrue()
+        {
+            float zero = 0.0f;
+            Assert.True(Is.Zero(zero));
+        }
+
+        
+        [Test]
+        public void IsZero_FloatNotZero_ReturnFalse()
+        {
+            float zero = 8.00000f;
+            Assert.False(Is.Zero(zero));
+        }
+
+
+        [Test]
+        public void IsZero_DecimalZero_ReturnTrue()
+        {
+            decimal zero = 0.0M;
+            Assert.True(Is.Zero(zero));
+        }
+
+        
+        [Test]
+        public void IsZero_DecimalNotZero_ReturnFalse()
+        {
+            decimal zero = 8.00000M;
+            Assert.False(Is.Zero(zero));
+        }
+        
+        [Test]
         public void IsNegative_NonNegativeDecimal_ReturnsFalse()
         {
             decimal negativeDecimal = 1.122m;
