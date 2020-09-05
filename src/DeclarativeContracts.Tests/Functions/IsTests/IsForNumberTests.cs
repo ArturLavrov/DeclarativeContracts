@@ -376,7 +376,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNotZero_LongZero_ReturnFale()
         {
-            int zero = 0;
+            long zero = 0;
             Assert.False(Is.NotZero(zero));
         }
 
@@ -384,7 +384,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNotZero_LongNotZero_ReturnTrue()
         {
-            int notZero = 8;
+            long notZero = 873249872345;
             Assert.True(Is.NotZero(notZero));
         }
 
@@ -432,9 +432,6 @@ namespace DeclarativeContracts.Tests.Functions
             double notZero = 8.000d;
             Assert.True(Is.NotZero(notZero));
         }
-
-
-
 
         [Test]
         public void IsOdd_OddNunber_ReturnTrue()
