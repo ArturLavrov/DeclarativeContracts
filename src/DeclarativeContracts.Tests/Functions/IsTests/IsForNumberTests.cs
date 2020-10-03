@@ -544,7 +544,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsOdd_OddFloatNunber_ReturnTrue()
         {
-            long oddNumber = 11;
+            float oddNumber = 11f;
             Assert.True(Is.Odd(oddNumber));
         }
 
@@ -561,6 +561,92 @@ namespace DeclarativeContracts.Tests.Functions
             decimal oddNumber = 11m;
             Assert.True(Is.Odd(oddNumber));
         }
+
+        [Test]
+        public void IsOne_ShortOne_ReturnsTrue()
+        {
+            short number = 1;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsOne_IntOne_ReturnsTrue()
+        {
+            int number = 1;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsOne_LongOne_ReturnsTrue()
+        {
+            long number = 1;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsOne_FloatOne_ReturnsTrue()
+        {
+            float number = 1.0f;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsOne_DoubleOne_ReturnsTrue()
+        {
+            double number = 1;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsOne_DecimalOne_ReturnsTrue()
+        {
+            decimal number = 1M;
+            Assert.True(Is.One(number));
+        }
+
+
+        [Test]
+        public void IsNotOne_NotOneShort_ReturnsTrue()
+        {
+            short number = 33;
+            Assert.True(Is.NotOne(number));
+        }
+
+        [Test]
+        public void IsNotOne_NotOneInt_ReturnsTrue()
+        {
+            int number = 22;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsNotOne_LongNotOne_ReturnsTrue()
+        {
+            long number = 13;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsNotOne_FloatNotOne_ReturnsTrue()
+        {
+            float number = 1.0f;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsNotOne_DoubleNotOne_ReturnsTrue()
+        {
+            double number = 5;
+            Assert.True(Is.One(number));
+        }
+
+        [Test]
+        public void IsNotOne_DecimalNotOne_ReturnsTrue()
+        {
+            decimal number = 3M;
+            Assert.True(Is.One(number));
+        }
+
 
         [Test]
         public void IsEven_EvenShortNumebr_ReturnTrue()
