@@ -629,7 +629,7 @@ namespace DeclarativeContracts.Tests.Functions
         [Test]
         public void IsNotOne_FloatNotOne_ReturnsTrue()
         {
-            float number = 1.0f;
+            float number = 3.0f;
             Assert.True(Is.NotOne(number));
         }
 
