@@ -616,35 +616,35 @@ namespace DeclarativeContracts.Tests.Functions
         public void IsNotOne_NotOneInt_ReturnsTrue()
         {
             int number = 22;
-            Assert.True(Is.One(number));
+            Assert.True(Is.NotOne(number));
         }
 
         [Test]
         public void IsNotOne_LongNotOne_ReturnsTrue()
         {
             long number = 13;
-            Assert.True(Is.One(number));
+            Assert.True(Is.NotOne(number));
         }
 
         [Test]
         public void IsNotOne_FloatNotOne_ReturnsTrue()
         {
             float number = 1.0f;
-            Assert.True(Is.One(number));
+            Assert.True(Is.NotOne(number));
         }
 
         [Test]
         public void IsNotOne_DoubleNotOne_ReturnsTrue()
         {
             double number = 5;
-            Assert.True(Is.One(number));
+            Assert.True(Is.NotOne(number));
         }
 
         [Test]
         public void IsNotOne_DecimalNotOne_ReturnsTrue()
         {
             decimal number = 3M;
-            Assert.True(Is.One(number));
+            Assert.True(Is.NotOne(number));
         }
 
 
