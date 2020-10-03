@@ -520,18 +520,88 @@ namespace DeclarativeContracts.Tests.Functions
             Assert.False(Is.One(notOne));
         }
 
+        [Test]
+        public void IsOdd_OddShortNunber_ReturnTrue()
+        {
+            short oddNumber = 1;
+            Assert.True(Is.Odd(oddNumber));
+        }
 
         [Test]
-        public void IsOdd_OddNunber_ReturnTrue()
+        public void IsOdd_OddIntNunber_ReturnTrue()
         {
             int oddNumber = 11;
             Assert.True(Is.Odd(oddNumber));
         }
 
         [Test]
-        public void IsEven_EvenNumebr_ReturnTrue()
+        public void IsOdd_OddLongNunber_ReturnTrue()
+        {
+            long oddNumber = 11;
+            Assert.True(Is.Odd(oddNumber));
+        }
+
+        [Test]
+        public void IsOdd_OddFloatNunber_ReturnTrue()
+        {
+            long oddNumber = 11;
+            Assert.True(Is.Odd(oddNumber));
+        }
+
+        [Test]
+        public void IsOdd_OddDoubleNunber_ReturnTrue()
+        {
+            double oddNumber = 1;
+            Assert.True(Is.Odd(oddNumber));
+        }
+
+        [Test]
+        public void IsOdd_OddDecimalNunber_ReturnTrue()
+        {
+            decimal oddNumber = 11m;
+            Assert.True(Is.Odd(oddNumber));
+        }
+
+        [Test]
+        public void IsEven_EvenShortNumebr_ReturnTrue()
+        {
+            short evenNumber = 10;
+            Assert.That(Is.Even(evenNumber));
+        }
+
+        [Test]
+        public void IsEven_EvenIntNumebr_ReturnTrue()
         {
             int evenNumber = 10;
+            Assert.That(Is.Even(evenNumber));
+        }
+
+        [Test]
+        public void IsEven_EvenLongNumebr_ReturnTrue()
+        {
+            long evenNumber = 10;
+            Assert.That(Is.Even(evenNumber));
+        }
+
+        [Test]
+        public void IsEven_EvenFloatNumebr_ReturnTrue()
+        {
+            float evenNumber = 1000.0f;
+            Assert.That(Is.Even(evenNumber));
+        }
+
+
+        [Test]
+        public void IsEven_EvenDoubleNumebr_ReturnTrue()
+        {
+            double evenNumber = 10;
+            Assert.That(Is.Even(evenNumber));
+        }
+
+        [Test]
+        public void IsEven_EvenDecimalNumebr_ReturnTrue()
+        {
+            decimal evenNumber = 1000M;
             Assert.That(Is.Even(evenNumber));
         }
 
