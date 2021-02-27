@@ -9,9 +9,7 @@ namespace DeclarativeContracts.Tests.Precondition
     [TestFixture]
     public class RequireTest
     {
-        
-        
-        
+
         [Test]
         public void That_ValidArguemntsAndContractNotViolated_ContractViolationExceptionDoesNotThrows()
         {
