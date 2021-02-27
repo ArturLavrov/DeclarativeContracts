@@ -137,6 +137,26 @@ namespace DeclarativeContracts.Tests.Precondition
                 )
             );
         }
+        
+        [Test]
+        public void ForAll_ListWith3ElementsOneIsLessThanZero_ThrowsContractViolationExceptionWithCustomErrorMessage()
+        {
+            List<int> elementsCollection = new List<int>
+            {
+                -1,3,4
+            };
+
+            string contractViolationMessage = "contract was violated, custom message";
+            
+            Assert.Throws(
+                typeof(ContractViolationException),
+                () => Require.ForAll(
+                    elementsCollection,
+                    ((element) => element > 0),
+                    contractViolationMessage
+                )
+            );
+        }
 
         [Test]
         public void That_ContractViolatedPassCustomException_CustomExceptionWasThrows()
@@ -151,8 +171,7 @@ namespace DeclarativeContracts.Tests.Precondition
                 typeof(ArgumentException), 
                 () => Require.That(customer.Name, n => n.Length > 5, new ArgumentException()));
         }
-
-
+        
         [Test]
         public void That_TrueForAllElements_ReturnTrue()
         {
@@ -165,6 +184,20 @@ namespace DeclarativeContracts.Tests.Precondition
         {
             var collection = new List<string>(){ "o", "World"};
             Assert.Throws(typeof(ContractViolationException), () => Require.TrueForAll(collection, (item) => item.Length > 2));
+        }
+        
+        [Test]
+        public void That_FalseForOneElementFromCollection_ContractViolationExceptionWasThrownWithCustomErrorMessage()
+        {
+            var collection = new List<string>(){ "o", "World"};
+
+            string contractViolationMessage = "contract was violated, custom message";
+            
+            Assert.Throws(
+                typeof(ContractViolationException), 
+                () => Require.TrueForAll(collection, (item) => item.Length > 2),
+                contractViolationMessage
+            );
         }
 
         [Test]
