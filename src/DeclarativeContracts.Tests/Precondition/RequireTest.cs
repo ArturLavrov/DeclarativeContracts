@@ -189,6 +189,16 @@ namespace DeclarativeContracts.Tests.Precondition
 
             Assert.Throws(typeof(ContractViolationException), () => Require.That(functor));
         }
+        
+        [Test]
+        public void That_FuncThatReturnsFalse_ContractViolationExceptionWasThrownWithCustomUserDefinedMessage()
+        {
+            Func<bool> functor = () => false;
+
+            string contractViolationCustomMessage = "functor return false";
+
+            Assert.Throws(typeof(ContractViolationException), () => Require.That(functor, contractViolationCustomMessage), contractViolationCustomMessage);
+        }
 
         [Test]
         public void That_FuncIsNull_ArgumentExceptionWasThrown()
