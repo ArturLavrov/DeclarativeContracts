@@ -47,6 +47,29 @@ namespace DeclarativeContracts.Tests.Postcondition
                 )
             );
         }
+        
+        [Test]
+        public void Ensure_ValidArgumentsAndContractViolated_ContractViolationExceptionThrowsWithCustomMessage()
+        {
+            var customer = new Customer()
+            {
+                Name = null,
+                LastName = "Osbourne"
+            };
+
+            string contractViolationCustomMessage = "custom message";
+            
+            Assert.Throws
+            (
+                typeof(ContractViolationException),
+                () => Ensure.That(
+                    customer, 
+                    customer => customer.Name, 
+                    (name) => name != null,
+                    contractViolationCustomMessage
+                )
+            );
+        }
        
         [Test]
         public void Ensure_ValidArguemntsStringIsNotNull_ContractViolationExceptionDoesNotThrows()
@@ -102,6 +125,24 @@ namespace DeclarativeContracts.Tests.Postcondition
             };
 
             Assert.Throws(typeof(ContractViolationException), () => Ensure.That(customer.Name, (name) => name.Length > 10));
+        }
+        
+        [Test]
+        public void That_PredicateRetursFalse_ThrowsContractViolationExceptionWithCustomMessage()
+        {
+            var customer = new Customer()
+            {
+                Name = "Ozzy",
+                LastName = "Osbourne"
+            };
+
+            string customContractViolationMessage = "custom message";
+            
+            Assert.Throws(typeof(ContractViolationException),
+                () => Ensure.That(
+                    customer.Name,
+                    (name) => name.Length > 10),
+                customContractViolationMessage);
         }
     }
 }
