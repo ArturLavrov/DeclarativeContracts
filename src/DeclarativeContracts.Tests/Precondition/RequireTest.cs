@@ -9,6 +9,9 @@ namespace DeclarativeContracts.Tests.Precondition
     [TestFixture]
     public class RequireTest
     {
+        
+        
+        
         [Test]
         public void That_ValidArguemntsAndContractNotViolated_ContractViolationExceptionDoesNotThrows()
         {
@@ -45,6 +48,29 @@ namespace DeclarativeContracts.Tests.Precondition
                         (name) => name != null
                     )
                 );
+        }
+        
+        
+        [Test]
+        public void That_ValidArguemntsAndContractViolated_ContractViolationExceptionWithCustomTextThrows()
+        {
+            var customer = new Customer()
+            {
+                Name = null,
+                LastName = "Osbourne"
+            };
+
+            string contractViolationMessageText = "contract violation";
+            
+            Assert.Throws(
+                typeof(ContractViolationException),
+                () => Require.That(
+                    customer, 
+                    с => с.Name, 
+                    (name) => name != null,
+                    contractViolationMessageText
+                )
+            );
         }
 
         [Test]
