@@ -2,9 +2,21 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <Version>1.1.0</Version>
-        <PackageVersion>1.1.0</PackageVersion>
+        <Version>1.1.1</Version>
+        <PackageVersion>1.1.1</PackageVersion>
+
+        <PackageId>DeclarativeContracts</PackageId>
+        <Authors>Artur Lavrov, Mykyta Lytvynenko</Authors>
+        <Title>Declarative Contracts</Title>
+        <PackageDescription>Lightweight library that enforce design by contract approach in clean and declarative manner.</PackageDescription>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/ArturLavrov/DeclarativeContracts</RepositoryUrl>
     </PropertyGroup>
+    
+    <ItemGroup>
+      <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
